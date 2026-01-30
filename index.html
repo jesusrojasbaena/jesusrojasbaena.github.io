@@ -18,9 +18,12 @@
       --icon:#ddd;
       --shadow: 0 12px 34px rgba(0,0,0,.08);
       --shadowHover: 0 16px 44px rgba(0,0,0,.10);
+      --radius: 14px;
     }
 
     *{ box-sizing:border-box; }
+
+    html{ scroll-behavior: smooth; }
 
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
@@ -30,6 +33,7 @@
       line-height:1.65;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     /* Layout */
@@ -44,7 +48,7 @@
       color:#fff;
       text-align:center;
       padding: 28px 20px;
-      overflow: visible; /* ✅ para que los tooltips no se corten */
+      overflow: visible; /* para tooltips */
     }
 
     h1{
@@ -72,11 +76,11 @@
       width: 132px;
       height: 132px;
       object-fit: cover;
+      object-position: center 18%;
       border-radius: 50%;
       border: 3px solid rgba(255,255,255,0.92);
       box-shadow: 0 10px 28px rgba(0,0,0,0.45);
       display:block;
-      object-position: center 18%;
       background: #fff;
     }
 
@@ -97,7 +101,7 @@
       border-radius: 12px;
       text-decoration:none;
       color: var(--icon);
-      transition: transform .18s ease, background .18s ease, color .18s ease;
+      transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
       outline: none;
       position: relative;
     }
@@ -115,13 +119,14 @@
     .contact-icons a:focus-visible{
       box-shadow: 0 0 0 3px rgba(255,255,255,.25);
       background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
     }
 
     .contact-icons a:nth-child(1):hover{ color:#25d366; }
     .contact-icons a:nth-child(2):hover{ color:#ffffff; }
     .contact-icons a:nth-child(3):hover{ color:#0077b5; }
 
-    /* Tooltip (solo en dispositivos con hover) */
+    /* Tooltip: solo donde hay hover (PC) + también al focus */
     @media (hover:hover){
       .contact-icons a::after{
         content: attr(data-tip);
@@ -140,7 +145,8 @@
         transition: opacity .15s ease, transform .15s ease;
       }
 
-      .contact-icons a:hover::after{
+      .contact-icons a:hover::after,
+      .contact-icons a:focus-visible::after{
         opacity: 1;
         transform: translateX(-50%) translateY(2px);
       }
@@ -155,10 +161,10 @@
     .card{
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 18px;
-      transition: transform .18s ease, box-shadow .18s ease; /* ✅ hover fino */
+      transition: transform .18s ease, box-shadow .18s ease;
     }
 
     @media (hover:hover){
@@ -175,7 +181,7 @@
       padding-bottom: 8px;
     }
 
-    /* ✅ LISTAS MÁS MODERNAS */
+    /* Listas modernas */
     ul{
       list-style: none;
       margin: 0;
@@ -188,7 +194,6 @@
       padding-left: 18px;
     }
 
-    /* ✅ flecha fina en vez de punto */
     li::before{
       content: "›";
       position: absolute;
@@ -206,7 +211,7 @@
       color: var(--muted);
     }
 
-    /* ✅ GRID 2 COLUMNAS (PC) */
+    /* Grid */
     .grid{
       display: grid;
       grid-template-columns: 1fr;
@@ -214,19 +219,21 @@
       align-items: stretch;
     }
 
-    /* ✅ Igualar alturas + mejor reparto en escritorio */
+    /* ✅ Desktop: 2 columnas + alturas igualadas de forma sólida */
     @media (min-width: 900px){
       .grid{
         grid-template-columns: 1fr 1fr;
-      }
-
-      /* hace que los 2 cards superiores ocupen toda la altura de su fila */
-      .grid > .card{
-        height: 100%;
+        grid-auto-rows: 1fr; /* clave: la fila se estira igual */
       }
 
       .span-2{
         grid-column: 1 / -1;
+      }
+
+      /* El contenido dentro de la tarjeta se mantiene arriba */
+      .card{
+        display: flex;
+        flex-direction: column;
       }
     }
 
@@ -239,6 +246,12 @@
       .contact-icons a{ width: 42px; height: 42px; }
       .contact-icons a i{ font-size: 21px; }
       .card{ padding: 16px; }
+    }
+
+    /* Accesibilidad: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      *{ transition: none !important; }
     }
   </style>
 </head>
@@ -257,7 +270,7 @@
     </p>
 
     <nav class="contact-icons" aria-label="Enlaces de contacto">
-      <a href="https://wa.me/34656580388" target="_blank" rel="noopener"
+      <a href="https://wa.me/34656580388" target="_blank" rel="noopener noreferrer"
          aria-label="WhatsApp" data-tip="WhatsApp">
         <i class="fab fa-whatsapp"></i>
       </a>
@@ -267,7 +280,7 @@
         <i class="fas fa-envelope"></i>
       </a>
 
-      <a href="https://www.linkedin.com/in/jesusrojasbaena/" target="_blank" rel="noopener"
+      <a href="https://www.linkedin.com/in/jesusrojasbaena/" target="_blank" rel="noopener noreferrer"
          aria-label="LinkedIn" data-tip="LinkedIn">
         <i class="fab fa-linkedin"></i>
       </a>
