@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Jesús Rojas Baena | Web-CV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -16,157 +16,157 @@
       color: #222;
       line-height: 1.6;
     }
+
     header {
       background: #111;
       color: #fff;
       padding: 40px 20px;
       text-align: center;
     }
+
+    header p {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     section {
       max-width: 900px;
       margin: 30px auto;
       padding: 0 20px;
     }
+
     h2 {
       border-bottom: 2px solid #ddd;
       padding-bottom: 5px;
     }
+
     ul {
       padding-left: 20px;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       color: #666;
     }
-  /* === ICONOS DE CONTACTO === */
-.contact-icons {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 16px;
-}
 
-.contact-icons a {
-  font-size: 42px !important;
-  line-height: 1;
-  text-decoration: none;
-}
+    /* === FOTO PERFIL HEADER (RESPONSIVE) === */
+    .profile-photo{
+      display: flex;
+      justify-content: center;
+      margin: 0 0 14px;
+    }
 
-.contact-icons a i {
-  font-size: 42px !important;
-}
+    .profile-photo img{
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+      display: block;
+    }
 
-.contact-icons a:hover {
-  transform: scale(1.2);
-}
+    /* === ICONOS DE CONTACTO === */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 16px;
+    }
 
-.contact-icons a:nth-child(1):hover {
-  color: #25d366; /* WhatsApp */
-}
+    .contact-icons a {
+      font-size: 42px;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform .2s ease, color .2s ease;
+      color: #ddd; /* color base en header */
+    }
 
-.contact-icons a:nth-child(2):hover {
-  color: #555; /* Email */
-}
+    .contact-icons a:hover {
+      transform: scale(1.15);
+      color: inherit;
+    }
 
-.contact-icons a:nth-child(3):hover {
-  color: #0077b5; /* LinkedIn */
-}
-    
-  /* === PULIDO HEADER CONTACTO === */
-.header-contact {
-  margin-top: 28px;
-}
+    .contact-icons a:nth-child(1):hover { color: #25d366; } /* WhatsApp */
+    .contact-icons a:nth-child(2):hover { color: #ffffff; } /* Email */
+    .contact-icons a:nth-child(3):hover { color: #0077b5; } /* LinkedIn */
 
-.header-contact a {
-  margin: 0 6px;
-}
+    /* === PULIDO HEADER CONTACTO === */
+    .header-contact { margin-top: 28px; }
 
-header p {
-  max-width: 900px;
-  margin: 0 auto;
-}
-</style>
+    /* Ajuste móvil */
+    @media (max-width: 600px){
+      header { padding: 28px 16px; }
+      .profile-photo img { width: 110px; height: 110px; }
+      .contact-icons { gap: 22px; }
+      .contact-icons a { font-size: 36px; }
+    }
+  </style>
 </head>
+
 <body>
-.header-contact a {
-  color: #ddd;
-}
+  <header>
+    <div class="profile-photo">
+      <img src="/perfil.jpg" alt="Foto de Jesús Rojas Baena" />
+    </div>
 
-.header-contact a:hover {
-  color: inherit;
-}
-<header>
-  <div class="profile-photo">
-  <img src="/perfil.jpg" alt="Foto de Jesús Rojas Baena">
+    <h1>Jesús Rojas Baena</h1>
 
-</div>
+    <p>
+      Perfil digital con experiencia práctica en herramientas de inteligencia artificial,
+      creación de contenidos y diseño web, con enfoque creativo y aprendizaje continuo.
+    </p>
 
-  <h1>Jesús Rojas Baena</h1>
-  <p>
-    Perfil digital con experiencia práctica en herramientas de inteligencia artificial,
-    creación de contenidos y diseño web, con enfoque creativo y aprendizaje continuo.
-  </p>
-  <div class="contact-icons header-contact">
-  <a href="https://wa.me/34656580388" target="_blank" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+    <div class="contact-icons header-contact">
+      <a href="https://wa.me/34656580388" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
 
-  <a href="mailto:rojasjbcc@gmail.com" aria-label="Email">
-    <i class="fas fa-envelope"></i>
-  </a>
+      <a href="mailto:rojasjbcc@gmail.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
 
-  <a href="https://www.linkedin.com/in/jesusrojasbaena/" target="_blank" aria-label="LinkedIn">
-    <i class="fab fa-linkedin"></i>
-  </a>
-</div>
+      <a href="https://www.linkedin.com/in/jesusrojasbaena/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </header>
 
-</header>
+  <section>
+    <h2>Sobre mí</h2>
+    <p>
+      Profesional con perfil digital y creativo, con experiencia práctica en el uso de
+      herramientas de inteligencia artificial y entornos web. He realizado numerosos cursos
+      relacionados con IA y he trabajado con distintos modelos, lo que me permite comprender
+      sus posibilidades reales y aplicarlas de forma práctica.
+    </p>
+  </section>
 
-<section>
-  <h2>Sobre mí</h2>
-  <p>
-    Profesional con perfil digital y creativo, con experiencia práctica en el uso de
-    herramientas de inteligencia artificial y entornos web. He realizado numerosos cursos
-    relacionados con IA y he trabajado con distintos modelos, lo que me permite comprender
-    sus posibilidades reales y aplicarlas de forma práctica.
-  </p>
-</section>
+  <section>
+    <h2>Habilidades e intereses digitales</h2>
+    <ul>
+      <li>Uso avanzado de herramientas de inteligencia artificial generativa</li>
+      <li>Experiencia con distintos modelos de IA (ChatGPT, Gemini, Claude, Copilot, Grok, Qwen)</li>
+      <li>Diseño web básico y estructuración de páginas</li>
+      <li>Creación de contenidos y generación de imágenes con IA</li>
+      <li>Aprendizaje autónomo y adaptación a nuevas tecnologías</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Habilidades e intereses digitales</h2>
-  <ul>
-    <li>Uso avanzado de herramientas de inteligencia artificial generativa</li>
-    <li>Experiencia con distintos modelos de IA (ChatGPT, Gemini, Claude, Copilot, Grok, Qwen)</li>
-    <li>Diseño web básico y estructuración de páginas</li>
-    <li>Creación de contenidos y generación de imágenes con IA</li>
-    <li>Aprendizaje autónomo y adaptación a nuevas tecnologías</li>
-  </ul>
-</section>
+  <section>
+    <h2>Aficiones</h2>
+    <ul>
+      <li>Música</li>
+      <li>Cine</li>
+      <li>Deporte</li>
+      <li>Tecnología</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Aficiones</h2>
-  <ul>
-    <li>Música</li>
-    <li>Cine</li>
-    <li>Deporte</li>
-    <li>Tecnología</li>
-  </ul>
-</section>
-
-<section>
-  
-
-
-
-</section>
-
-
-<footer>
-  © 2026 · Web-CV personal
-</footer>
-
+  <footer>
+    © 2026 · Web-CV personal
+  </footer>
 </body>
 </html>
-
