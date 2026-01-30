@@ -17,6 +17,7 @@
       --header:#111;
       --icon:#ddd;
       --shadow: 0 12px 34px rgba(0,0,0,.08);
+      --shadowHover: 0 16px 44px rgba(0,0,0,.10);
     }
 
     *{ box-sizing:border-box; }
@@ -42,7 +43,8 @@
       background: var(--header);
       color:#fff;
       text-align:center;
-      padding: 28px 20px; /* ✅ menos alto */
+      padding: 28px 20px;
+      overflow: visible; /* ✅ para que los tooltips no se corten */
     }
 
     h1{
@@ -119,32 +121,34 @@
     .contact-icons a:nth-child(2):hover{ color:#ffffff; }
     .contact-icons a:nth-child(3):hover{ color:#0077b5; }
 
-    /* Tooltip */
-    .contact-icons a::after{
-      content: attr(data-tip);
-      position: absolute;
-      bottom: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.85);
-      color: #fff;
-      font-size: 12px;
-      padding: 6px 8px;
-      border-radius: 8px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .15s ease, transform .15s ease;
-    }
+    /* Tooltip (solo en dispositivos con hover) */
+    @media (hover:hover){
+      .contact-icons a::after{
+        content: attr(data-tip);
+        position: absolute;
+        bottom: -38px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,.85);
+        color: #fff;
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .15s ease, transform .15s ease;
+      }
 
-    .contact-icons a:hover::after{
-      opacity: 1;
-      transform: translateX(-50%) translateY(2px);
+      .contact-icons a:hover::after{
+        opacity: 1;
+        transform: translateX(-50%) translateY(2px);
+      }
     }
 
     /* Main spacing */
     main{
-      padding: 22px 0 18px; /* ✅ mejor aire abajo */
+      padding: 22px 0 18px;
     }
 
     /* Cards */
@@ -154,6 +158,14 @@
       border-radius: 14px;
       box-shadow: var(--shadow);
       padding: 18px;
+      transition: transform .18s ease, box-shadow .18s ease; /* ✅ hover fino */
+    }
+
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(-2px);
+        box-shadow: var(--shadowHover);
+      }
     }
 
     h2{
@@ -176,16 +188,20 @@
       padding-left: 18px;
     }
 
+    /* ✅ flecha fina en vez de punto */
     li::before{
-      content: "•";
+      content: "›";
       position: absolute;
       left: 0;
-      color: #999;
+      color: #9aa0a6;
+      font-size: 18px;
+      line-height: 1;
+      top: 2px;
     }
 
     footer{
       text-align:center;
-      padding: 14px 12px 22px; /* ✅ más equilibrado */
+      padding: 14px 12px 22px;
       font-size: 0.92em;
       color: var(--muted);
     }
@@ -195,13 +211,20 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
-      align-items: stretch; /* ✅ misma “altura” visual */
+      align-items: stretch;
     }
 
+    /* ✅ Igualar alturas + mejor reparto en escritorio */
     @media (min-width: 900px){
       .grid{
         grid-template-columns: 1fr 1fr;
       }
+
+      /* hace que los 2 cards superiores ocupen toda la altura de su fila */
+      .grid > .card{
+        height: 100%;
+      }
+
       .span-2{
         grid-column: 1 / -1;
       }
