@@ -177,7 +177,7 @@
       }
     }
 
-    /* Main spacing (un poco más premium) */
+    /* Main spacing */
     main{
       padding: 26px 0 18px;
     }
@@ -207,11 +207,9 @@
     }
 
     /* Parrafos más controlados */
-    .card p{
-      margin: 0;
-    }
+    .card p{ margin: 0; }
 
-    /* Listas modernas */
+    /* Listas modernas (default) */
     ul{
       list-style: none;
       margin: 0;
@@ -246,27 +244,16 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
-      align-items: stretch; /* estira items a la altura de la fila */
+      align-items: stretch;
     }
 
-    /* ✅ Desktop: 2 columnas + tarjetas superiores iguales (sin estirar la fila de Aficiones) */
     @media (min-width: 900px){
-      .grid{
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .span-2{
-        grid-column: 1 / -1;
-      }
-
-      /* Igualar alturas solo de la primera fila: las cards ya se estiran por la fila */
-      .card{
-        display: flex;
-        flex-direction: column;
-      }
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .span-2{ grid-column: 1 / -1; }
+      .card{ display:flex; flex-direction: column; }
     }
 
-    /* Focus visible general (por si añades links en cards) */
+    /* Focus visible general */
     a:focus-visible{
       outline: none;
       box-shadow: var(--focus);
@@ -284,10 +271,56 @@
       .card{ padding: 16px; }
     }
 
-    /* Accesibilidad: reduce motion */
+    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior: auto; }
       *{ transition: none !important; }
+    }
+
+    /* ====== FORMACION (SEPARADA) ====== */
+    .subhead{
+      margin: 14px 0 8px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .details{
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .details summary{
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+      list-style: none;
+    }
+
+    .details summary::-webkit-details-marker{ display:none; }
+
+    .details summary::before{
+      content: "＋ ";
+      color: #777;
+    }
+    .details[open] summary::before{
+      content: "－ ";
+    }
+
+    /* Lista "clean" con punto (•) para Formación */
+    .clean li{
+      padding-left: 16px;
+    }
+    .clean li::before{
+      content: "•";
+      top: 1px;
+      font-size: 16px;
+    }
+    .clean em{
+      color: var(--muted);
+      font-style: normal;
     }
   </style>
 </head>
@@ -364,6 +397,52 @@
           <li>Tecnología</li>
         </ul>
       </section>
+
+      <!-- ====== FORMACION (SEPARADA) ====== -->
+      <section class="card span-2" id="formacion">
+        <h2>Formación</h2>
+
+        <p style="margin-top:0; color: var(--muted);">
+          Formación académica/oficial y formación complementaria (IA, automatización y herramientas digitales).
+        </p>
+
+        <h3 class="subhead">Formación académica y oficial</h3>
+        <ul class="clean">
+          <li><strong>Certificado de Profesionalidad ELES0208</strong> — Junta de Andalucía (380h, 2021–2022)</li>
+          <li><strong>Prácticas Técnico Auxiliar en Telecomunicaciones</strong> — Montajes Eléctricos Hermanos Plata S.L. (51 días, 2022)</li>
+          <li><strong>Graduado Escolar (E.G.B.)</strong> — Ministerio de Educación y Ciencia (expedido 05/12/1985)</li>
+        </ul>
+
+        <h3 class="subhead">Formación complementaria (destacada)</h3>
+        <ul class="clean">
+          <li><strong>IA Heroes Pro</strong> — Learning Heroes (1.080h, 2024–2025) <em>· Programa avanzado</em></li>
+          <li><strong>Microsoft 365</strong> — ATA (60h, 2025)</li>
+          <li><strong>Microsoft 365</strong> — Avante Formación (45h, 2025)</li>
+          <li><strong>IA en el puesto de trabajo</strong> — Avante Formación (30h, 2025)</li>
+          <li><strong>Social Media Marketing en Comercio</strong> — ATU (100h, 2024)</li>
+          <li><strong>Jornadas de IA</strong> (Vibe Coding y Automatizaciones) — BIG School (6h, 23/01/2026)</li>
+        </ul>
+
+        <details class="details">
+          <summary>Ver formación complementaria completa</summary>
+
+          <ul class="clean">
+            <li><strong>Jornadas de IA</strong> (Vibe Coding y Automatizaciones) — BIG School (6h, 23/01/2026)</li>
+            <li><strong>IA Heroes Pro</strong> — Learning Heroes (1.080h, 2024–2025) <em>· Programa avanzado</em></li>
+            <li><strong>Microsoft 365</strong> — Avante Formación (45h, 03/04/2025–24/04/2025)</li>
+            <li><strong>IA en el puesto de trabajo</strong> — Avante Formación (30h, 17/03/2025–28/03/2025)</li>
+            <li><strong>Microsoft 365</strong> — ATA (60h, 05/02/2025–11/03/2025)</li>
+            <li><strong>Social Media Marketing en Comercio</strong> — ATU (100h, 2024)</li>
+            <li><strong>Sistemas de Calidad</strong> (8h, 2010)</li>
+            <li><strong>Atención al Cliente mediante TICs</strong> — FECE (fecha no indicada)</li>
+            <li><strong>Financiación / Venta a crédito</strong> (10h, 2006)</li>
+            <li><strong>Calidad en la Atención al Cliente</strong> (25h, 2005)</li>
+            <li><strong>Aplicaciones Informáticas de Oficina</strong> — Junta de Andalucía / CGT (320h, 24/04/1998–27/07/1998)</li>
+          </ul>
+        </details>
+      </section>
+      <!-- ====== /FORMACION ====== -->
+
     </div>
   </main>
 
